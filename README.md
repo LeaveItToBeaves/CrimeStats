@@ -1,5 +1,7 @@
-Initial push for Crime Statistics project for CS 3100
 
 Currently implementing Express using EJS templating engine
 
-Attempted to incorporate php, not fully working yet.
+This branch is using OpenStreetsMap using leaflet.js: http://leafletjs.com/
+
+The current implementation is taken from a class project done recently and is
+being converted to work with the crime statistics
