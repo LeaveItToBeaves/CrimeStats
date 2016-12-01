@@ -3,6 +3,25 @@
 var config = require('../config/sqlConfig.json');
 var sql = require('sql');
 sql.setDialect('mysql');
+var crimeQueries = sql.define({
+  name: 'CrimeStatsTable',
+  columns: [
+    'Date.Rptd',
+    'DR.NO',
+    'DATE.OCC',
+    'TIME.OCC',
+    'AREA',
+    'AREA.NAME',
+    'RD',
+    'Crm.Cd',
+    'CrmCd.Desc',
+    'Status',
+    'Status.Desc',
+    'LOCATION',
+    'Cross.Street',
+    'Location.1'
+  ]
+})
 var mysql = require('mysql');
 var crimes = mysql.createConnection({
   host: config.host,
@@ -16,9 +35,14 @@ crimes.connect(function(err){
     console.log(err);
     return;
   }
-  console.log('Connection established')
+  console.log('Connection established');
+  var query = crimeQueries.select(crimeQueries.star()).from(crimeQueries).toQuery();
+  crimes.query(query, function(err, rows){
+    if(err) throw err;
+    console.log('data received');
+    console.log(rows[1]);
+  });
 });
 
 
-// var query = crimes.select(crimes.star()).from(crimes).toQuery();
 
