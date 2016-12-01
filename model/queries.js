@@ -37,6 +37,7 @@ crimes.connect(function(err){
   }
   console.log('Connection established');
   var query = crimeQueries.select(crimeQueries.star()).from(crimeQueries).toQuery();
+  console.log(query);
   crimes.query(query, function(err, rows){
     if(err) throw err;
     console.log('data received');
