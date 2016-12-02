@@ -61,7 +61,7 @@ module.exports = {
         if(err) throw err;
         console.log('data received');
         for(let row of rows){
-          locs.push(row)
+          locs.push(row['Location.1'])
         }
         res.render('index', { title: locs });
 
