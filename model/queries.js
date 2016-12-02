@@ -29,42 +29,45 @@ var crimes = mysql.createConnection({
   password: config.password,
   database: config.database
 });
-crimes.connect(function(err){
-  if(err){
-    console.log("Error connecting to Db");
-    console.log(err);
-    return;
-  }
-  console.log('Connection established');
-  var query = crimeQueries.select(crimeQueries['Location.1']).from(crimeQueries).toQuery();
-  console.log(query);
-  crimes.query(query.text, function(err, rows){
-    if(err) throw err;
-    console.log('data received');
-    console.log(rows[1]);
-  });
-});
-
-// module.exports = {
-//   getAllLocs: function(){
-//     crimes.connect(function(err){
-//       if(err){
-//         console.log("Error connecting to Db");
-//         console.log(err);
-//         return;
-//       }
-//       let locs = [];
-//       console.log('Connection established');
-//       var query = crimeQueries.select(crimeQueries['Location.1']).from(crimeQueries).toQuery();
-//       console.log(query);
-//       crimes.query(query.text, function(err, rows){
-//         if(err) throw err;
-//         console.log('data received');
-//         console.log(rows[1]);
-//       });
-//     });
+// crimes.connect(function(err){
+//   if(err){
+//     console.log("Error connecting to Db");
+//     console.log(err);
+//     return;
 //   }
-// };
+//   console.log('Connection established');
+//   var query = crimeQueries.select(crimeQueries['Location.1']).from(crimeQueries).toQuery();
+//   console.log(query);
+//   crimes.query(query.text, function(err, rows){
+//     if(err) throw err;
+//     console.log('data received');
+//     console.log(rows[1]);
+//   });
+// });
+
+module.exports = {
+  getAllLocs: function(){
+    crimes.connect(function(err){
+      if(err){
+        console.log("Error connecting to Db");
+        console.log(err);
+        return;
+      }
+      let locs = [];
+      console.log('Connection established');
+      let query = crimeQueries.select(crimeQueries['Location.1']).from(crimeQueries).toQuery();
+      console.log(query);
+      crimes.query(query.text, function(err, rows){
+        if(err) throw err;
+        console.log('data received');
+        for(let row of rows){
+          locs.push(row)
+        }
+        return locs;
+      });
+    });
+  }
+};
 
 
 
