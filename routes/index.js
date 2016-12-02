@@ -8,8 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/map', function(req, res, next) {
-    var array = ['loc1', 'loc2'];
-    res.render('map', {});
+    model.getAllLocs(res);
 });
 
 module.exports = router;

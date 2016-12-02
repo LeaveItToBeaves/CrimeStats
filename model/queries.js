@@ -53,7 +53,7 @@ module.exports = {
         numarr.push(parseFloat(num.substring(num.lastIndexOf(',')+1, num.lastIndexOf(')'))));
         locs.push(numarr)
       }
-      res.render('index', { locs: locs });
+      res.render('map', {locs: locs});
     });
   }
 };
