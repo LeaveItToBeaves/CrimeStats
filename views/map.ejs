@@ -58,10 +58,11 @@
 
       function getPoints() {
 		var myStringArray = [[37.782551, -122.445368], [37.751266, -122.403355]];//This is the data array
-        <%var locations = []%>
-        <%for(loc of locs) {%>
-            <%locations.push(new google.maps.LatLng(loc[0], loc[1])); %>
-        <%}%>
+        var locations = []
+        var dblocs = <%locs%>;
+        for(loc of dblocs) {
+            locations.push(new google.maps.LatLng(loc[0], loc[1]));
+        }
         return <%locations%>;
         <!--myStringArray = ;-->
         <!--var arrayLength = myStringArray.length;-->
