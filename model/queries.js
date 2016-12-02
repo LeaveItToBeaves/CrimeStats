@@ -62,7 +62,10 @@ module.exports = {
       if(err) throw err;
       console.log('data received');
       for(let row of rows){
-        locs.push(row['Location.1'])
+        let num = row['Location.1'];
+        let lat = parseFloat(num.substring(num.lastIndexOf('(')+1, str.lastIndexOf(',')));
+        let long = parseFloat(num.substring(num.lastIndexOf(',')+1, str.lastIndexOf(')')));
+        locs.push([lat, long])
       }
       res.render('index', { title: locs });
     });
