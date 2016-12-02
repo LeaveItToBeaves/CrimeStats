@@ -1,13 +1,15 @@
+"use strict";
 var express = require('express');
 var router = express.Router();
 var __dirname = 'routes/phpviews/'; //testing with php
-
+var model = require('../model/queries');
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
+    model.getAllLocs(res);
 });
 
-router.get('/test', function(req, res, next) {
-    res.render('test');
+router.get('/map', function(req, res, next) {
+    var array = ['loc1', 'loc2'];
+    res.render('map', {});
 });
 
 module.exports = router;
