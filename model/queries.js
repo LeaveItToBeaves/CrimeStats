@@ -63,9 +63,10 @@ module.exports = {
       console.log('data received');
       for(let row of rows){
         let num = row['Location.1'];
-        let lat = parseFloat(num.substring(num.lastIndexOf('(')+1, num.lastIndexOf(',')));
-        let long = parseFloat(num.substring(num.lastIndexOf(',')+1, num.lastIndexOf(')')));
-        locs.push([lat, long])
+        let numarr = [];
+        numarr.push(parseFloat(num.substring(num.lastIndexOf('(')+1, num.lastIndexOf(','))));
+        numarr.push(parseFloat(num.substring(num.lastIndexOf(',')+1, num.lastIndexOf(')'))));
+        locs.push(numarr)
       }
       res.render('index', { title: locs });
     });
