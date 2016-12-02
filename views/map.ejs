@@ -58,12 +58,12 @@
 
       function getPoints() {
 		var myStringArray = [[37.782551, -122.445368], [37.751266, -122.403355]];//This is the data array
-        myStringArray = <%locs%>;
+        myStringArray = [<%=locs%>];
         var arrayLength = myStringArray.length;
 		var finalArray = [];
-			for (var i = 0; i < arrayLength; i++){
-				finalArray.push(new google.maps.LatLng(myStringArray[i][0], myStringArray[i][1]));
-			}
+        for (var i = 0; i < arrayLength; i+= 2){
+			finalArray.push(new google.maps.LatLng(myStringArray[i], myStringArray[i+1]));
+		}
 		return finalArray;
       }
 

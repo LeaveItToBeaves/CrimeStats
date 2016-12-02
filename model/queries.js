@@ -46,12 +46,18 @@ module.exports = {
     crimes.query(query.text, function(err, rows){
       if(err) throw err;
       console.log('data received');
+      let maxnum = 1000;
+      let currnum = 0;
       for(let row of rows){
+        if(currnum == maxnum){
+          break;
+        }
         let num = row['Location.1'];
         let numarr = [];
         numarr.push(parseFloat(num.substring(num.lastIndexOf('(')+1, num.lastIndexOf(','))));
         numarr.push(parseFloat(num.substring(num.lastIndexOf(',')+1, num.lastIndexOf(')'))));
-        locs.push(numarr)
+        locs.push(numarr);
+        currnum++;
       }
       res.render('map', {locs: locs});
     });
