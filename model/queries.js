@@ -29,14 +29,14 @@ var crimes = mysql.createConnection({
   password: config.password,
   database: config.database
 });
-crimes.connect(function(err){
-  if(err){
-    console.log("Error connecting to Db");
-    console.log(err);
-    return;
-  }
-  console.log('Connection established');
-});
+// crimes.connect(function(err){
+//   if(err){
+//     console.log("Error connecting to Db");
+//     console.log(err);
+//     return;
+//   }
+//   console.log('Connection established');
+// });
 
 module.exports = {
   getAllLocs: function(res){

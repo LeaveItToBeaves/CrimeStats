@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var jsImports = require('./routes/jsImports');
+var cssImports = require('./routes/cssImports');
+var imgImports = require('./routes/imgImports');
 var phpExpress = require('php-express') ({
     //assumes php is in your PATH
     binPath: 'php'
@@ -34,7 +37,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-
+app.use('/js', jsImports);
+app.use('/css', cssImports);
+app.use('/img', imgImports);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
