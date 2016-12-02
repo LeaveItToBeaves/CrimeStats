@@ -59,9 +59,9 @@
       function getPoints() {
 		var myStringArray = [[37.782551, -122.445368], [37.751266, -122.403355]];//This is the data array
         var locations = []
-        var dblocs = <%locs%>;
-        for(loc of dblocs) {
-            locations.push(new google.maps.LatLng(loc[0], loc[1]));
+        var dblocs = [<%=locs%>];
+        for(var i = 0; i < dblocs.length; i += 2) {
+            locations.push(new google.maps.LatLng(dblocs[i], dblocs[i + 1]));
         }
         return locations;
         <!--myStringArray = ;-->
