@@ -56,8 +56,10 @@ module.exports = {
         let numarr = [];
         numarr.push(parseFloat(num.substring(num.lastIndexOf('(')+1, num.lastIndexOf(','))));
         numarr.push(parseFloat(num.substring(num.lastIndexOf(',')+1, num.lastIndexOf(')'))));
-        locs.push(numarr);
-        currnum++;
+        if(numarr[0] && numarr[1]){
+          locs.push(numarr);
+          currnum++;
+        }
       }
       res.render('map', {locs: locs});
     });
