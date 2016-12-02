@@ -4,8 +4,7 @@ var router = express.Router();
 var __dirname = 'routes/phpviews/'; //testing with php
 var model = require('../model/queries');
 router.get('/', function(req, res, next) {
-    let array = model.getAllLocs();
-    res.render('index', { title: array });
+    model.getAllLocs(res);
 });
 
 router.get('/map', function(req, res, next) {

@@ -46,7 +46,7 @@ var crimes = mysql.createConnection({
 // });
 
 module.exports = {
-  getAllLocs: function(){
+  getAllLocs: function(res){
     crimes.connect(function(err){
       if(err){
         console.log("Error connecting to Db");
@@ -63,7 +63,8 @@ module.exports = {
         for(let row of rows){
           locs.push(row)
         }
-        return locs;
+        res.render('index', { title: locs });
+
       });
     });
   }
