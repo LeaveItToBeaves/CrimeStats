@@ -14,8 +14,8 @@ router.get('/world.jpg', function(req, res, next) {
   res.sendFile('world.jpg', {root: __dirname});
 });
 
-router.get('/images/marker-shadow.png', function(req, res, next) {
-  res.sendFile('images/marker-shadow.png', {root: __dirname});
+router.get('/CrimeTapeSmall.jpg', function(req, res, next) {
+  res.sendFile('CrimeTapeSmall.jpg', {root: __dirname});
 });
 
 router.get('/images/meowth.png', function(req, res, next) {
