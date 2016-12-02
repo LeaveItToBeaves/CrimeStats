@@ -46,7 +46,7 @@ module.exports = {
     crimes.query(query.text, function(err, rows){
       if(err) throw err;
       console.log('data received');
-      let maxnum = 1000;
+      let maxnum = 75000;
       let currnum = 0;
       for(let row of rows){
         if(currnum == maxnum){
